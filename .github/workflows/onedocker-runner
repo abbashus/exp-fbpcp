@@ -1,0 +1,30 @@
+name: Onedocker runner tests
+
+on:
+  workflow_dispatch:
+
+
+jobs:
+  onedocker_runner_tests:
+    name: Onedocker Runner test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.8
+
+      - name: Install Python packages
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install .
+
+      - name: Ondocker runner
+        id: onedocker_runner
+        run: python3 ./onedocker/script/runner/onedocker_runner.py ls --version=latest --repository_path=local --exe_path="/usr/bin/"
