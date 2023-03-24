@@ -48,7 +48,7 @@ jobs:
 
       - name: PCE validator runner
         id: runner
-        run: python3 ./pce/validator/validator.py --region="us-west-1" --pce-id=${{ inputs.pce_id }}
+        run: python3.8 ./pce/validator/validator.py --region="us-west-1" --pce-id=${{ inputs.pce_id }}
   
   onedocker_runner_tests:
     name: Onedocker Runner tests
@@ -69,5 +69,5 @@ jobs:
       
       - name: Ondocker runner
         id: onedocker_runner
-        run: python3 ./onedocker/script/runner/onedocker_runner.py ls --version=latest --repository_path=local --exe_path="/usr/bin/"
+        run: python3.8 ./onedocker/script/runner/onedocker_runner.py ls --version=latest --repository_path=local --exe_path="/usr/bin/"
 
