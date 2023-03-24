@@ -27,4 +27,4 @@ jobs:
 
       - name: Ondocker runner
         id: onedocker_runner
-        run: python3 ./onedocker/script/runner/onedocker_runner.py ls --version=latest --repository_path=local --exe_path="/usr/bin/"
+        run: python3.8 -m onedocker.script.runner ls --version=latest --repository_path=local --exe_path="/usr/bin/"
